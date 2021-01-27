@@ -16,8 +16,7 @@ func main() {
 	l := log.New(os.Stderr, "", 1)
 	currentTime, err := ntp.Time(HOST)
 	if err != nil {
-		l.Println("error")
-		os.Exit(1)
+		l.Fatal("error")
 	}
 	fmt.Println(currentTime)
 }
