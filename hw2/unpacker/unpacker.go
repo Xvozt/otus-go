@@ -9,7 +9,7 @@ import (
 
 func Unpack(s string) (string, error) {
 	if len(s) == 0 {
-		return "", fmt.Errorf("empty string")
+		return "", nil
 	}
 
 	r := []rune(s)
