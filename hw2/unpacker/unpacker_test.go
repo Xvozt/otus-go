@@ -15,31 +15,30 @@ type testData struct {
 }
 
 func TestUnpack_for_test_data(t *testing.T) {
-	for _, v := range []testData{
+	testData := []testData{
 		{
-			input: "a4bc2d5e",
+			input:    "a4bc2d5e",
 			expected: "aaaabccddddde",
-		},{
-			input: "abcd",
+		}, {
+			input:    "abcd",
 			expected: "abcd",
-		},{
-			input: "",
+		}, {
+			input:    "",
 			expected: "",
-		},{
-			input: "45",
+		}, {
+			input:    "45",
 			expected: "",
-			err: invalidStringError,
-		},{
-			input: "aaa10b",
+			err:      invalidStringError,
+		}, {
+			input:    "aaa10b",
 			expected: "",
-			err: invalidStringError,
+			err:      invalidStringError,
 		},
-	} {
-		result, err := Unpack(v.input)
-		assert.Equal(t, v.expected, result)
-		assert.Equal(t, v.err, err)
 	}
-
-
+	for _, data := range testData {
+		result, err := Unpack(data.input)
+		assert.Equal(t, data.expected, result)
+		assert.Equal(t, data.err, err)
+	}
 
 }
